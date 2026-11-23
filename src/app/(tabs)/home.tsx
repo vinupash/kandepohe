@@ -35,6 +35,11 @@ const Home = () => {
 
   const profileHeight = Math.max(0, containerHeight - verticalPadding * 2);
 
+  const [activeFilter, setActiveFilter] = useState("");
+  const [selectedFilters, setSelectedFilters] = useState<Record<string, any>>(
+    {},
+  );
+
   // --------------------------------
   // Bottom Sheet
   // --------------------------------
@@ -56,10 +61,18 @@ const Home = () => {
     [],
   );
 
-  const handleOpenFilter = useCallback(() => {
-    sheetRef.current?.snapToIndex(0);
-    setActiveFilter("Height");
-  }, []);
+  const handleOpenFilter = useCallback(
+    (tab?: string) => {
+      if (tab) {
+        setActiveFilter(tab);
+      } else if (!activeFilter) {
+        setActiveFilter("Height");
+      }
+
+      sheetRef.current?.snapToIndex(0);
+    },
+    [activeFilter],
+  );
 
   const handleCloseFilter = useCallback(() => {
     sheetRef.current?.close();
@@ -82,11 +95,6 @@ const Home = () => {
     // "Employed In",
     "Diet",
   ];
-
-  const [activeFilter, setActiveFilter] = useState("");
-  const [selectedFilters, setSelectedFilters] = useState<Record<string, any>>(
-    {},
-  );
 
   // Clear all filters
   const handleClearFilters = () => {
@@ -182,12 +190,7 @@ const Home = () => {
                 key={item.value}
                 activeOpacity={0.8}
                 onPress={() => setChecked(!checked)}
-                style={{
-                  width: "100%",
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                  gap: scale(8),
-                }}
+                style={CommonStyles.filterCheckBoxWrapper}
               >
                 <View
                   style={[
@@ -239,12 +242,7 @@ const Home = () => {
                 key={item.value}
                 activeOpacity={0.8}
                 onPress={() => setChecked(!checked)}
-                style={{
-                  width: "100%",
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                  gap: scale(8),
-                }}
+                style={CommonStyles.filterCheckBoxWrapper}
               >
                 <View
                   style={[
@@ -296,12 +294,7 @@ const Home = () => {
                 key={item.value}
                 activeOpacity={0.8}
                 onPress={() => setChecked(!checked)}
-                style={{
-                  width: "100%",
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                  gap: scale(8),
-                }}
+                style={CommonStyles.filterCheckBoxWrapper}
               >
                 <View
                   style={[
@@ -353,12 +346,7 @@ const Home = () => {
                 key={item.value}
                 activeOpacity={0.8}
                 onPress={() => setChecked(!checked)}
-                style={{
-                  width: "100%",
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                  gap: scale(8),
-                }}
+                style={CommonStyles.filterCheckBoxWrapper}
               >
                 <View
                   style={[
@@ -410,12 +398,7 @@ const Home = () => {
                 key={item.value}
                 activeOpacity={0.8}
                 onPress={() => setChecked(!checked)}
-                style={{
-                  width: "100%",
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                  gap: scale(8),
-                }}
+                style={CommonStyles.filterCheckBoxWrapper}
               >
                 <View
                   style={[
@@ -467,12 +450,7 @@ const Home = () => {
                 key={item.value}
                 activeOpacity={0.8}
                 onPress={() => setChecked(!checked)}
-                style={{
-                  width: "100%",
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                  gap: scale(8),
-                }}
+                style={CommonStyles.filterCheckBoxWrapper}
               >
                 <View
                   style={[
@@ -532,12 +510,7 @@ const Home = () => {
                 key={item.value}
                 activeOpacity={0.8}
                 onPress={() => setChecked(!checked)}
-                style={{
-                  width: "100%",
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                  gap: scale(8),
-                }}
+                style={CommonStyles.filterCheckBoxWrapper}
               >
                 <View
                   style={[
@@ -598,14 +571,13 @@ const Home = () => {
           activeFilter={activeFilter}
           onSelectFilter={setActiveFilter}
           onPress={handleOpenFilter}
-          onPressFilter={handleOpenFilter}
           filters={filterTabs}
         />
 
         {/* Profile List */}
         <View
           style={[
-            styles.profileImageWrapper,
+            CommonStyles.profileImageWrapper,
             { paddingVertical: verticalPadding },
           ]}
           onLayout={(event) => {
@@ -640,10 +612,10 @@ const Home = () => {
                 />
               )}
               ListEmptyComponent={
-                <View style={styles.emptyContainer}>
-                  <Text style={styles.emptyTitle}>No Profiles Found</Text>
+                <View style={CommonStyles.emptyContainer}>
+                  <Text style={CommonStyles.emptyTitle}>No Profiles Found</Text>
 
-                  <Text style={styles.emptySubtitle}>
+                  <Text style={CommonStyles.emptySubtitle}>
                     There are no profiles available right now. Please check back
                     later.
                   </Text>
@@ -682,18 +654,18 @@ const Home = () => {
           enablePanDownToClose
           enableDynamicSizing={false}
           backdropComponent={renderBackdrop}
-          backgroundStyle={styles.sheetBackground}
-          handleIndicatorStyle={styles.sheetIndicator}
+          backgroundStyle={CommonStyles.sheetBackground}
+          handleIndicatorStyle={CommonStyles.sheetIndicator}
         >
-          <View style={styles.sheetContent}>
+          <View style={CommonStyles.sheetContent}>
             {/* Sheet Header */}
-            <View style={styles.sheetHeader}>
-              <Text style={styles.sheetTitle}>Filter Profiles</Text>
+            <View style={CommonStyles.sheetHeader}>
+              <Text style={CommonStyles.sheetTitle}>Filter Profiles</Text>
 
               <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={handleCloseFilter}
-                style={styles.closeButton}
+                style={CommonStyles.closeButton}
               >
                 <XIcon size={verticalScale(20)} color={Colors.text} />
               </TouchableOpacity>
@@ -795,70 +767,6 @@ export default Home;
 // --------------------------------
 
 const styles = StyleSheet.create({
-  // Profile List
-  profileImageWrapper: {
-    flex: 1,
-    paddingHorizontal: scale(20),
-  },
-
-  emptyContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: scale(20),
-  },
-
-  emptyTitle: {
-    fontSize: scale(18),
-    fontFamily: "Poppins-SemiBold",
-    color: "#222222",
-    textAlign: "center",
-  },
-
-  emptySubtitle: {
-    marginTop: verticalScale(8),
-    fontSize: scale(13),
-    color: "#777777",
-    textAlign: "center",
-  },
-
-  // Bottom Sheet
-  sheetBackground: {
-    backgroundColor: Colors.white,
-    borderTopLeftRadius: verticalScale(20),
-    borderTopRightRadius: verticalScale(20),
-  },
-
-  sheetIndicator: {
-    backgroundColor: Colors.primary,
-    width: 45,
-  },
-
-  sheetContent: {
-    flex: 1,
-    position: "relative",
-  },
-
-  sheetHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: scale(20),
-    paddingBottom: verticalScale(10),
-    borderBottomColor: "#E5E7EB",
-    borderBottomWidth: 1,
-  },
-
-  sheetTitle: {
-    fontFamily: Fonts.semiBold,
-    fontSize: verticalScale(14),
-    color: Colors.text,
-  },
-
-  closeButton: {
-    padding: scale(4),
-  },
-
   // Filter Layout
   filterContainer: {
     flex: 1,
@@ -923,13 +831,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: scale(16),
-    // paddingVertical: verticalScale(12),
-    // borderTopWidth: 1,
-    // borderTopColor: "#EEEEEE",
-    // backgroundColor: Colors.white,
     gap: scale(10),
     flexShrink: 0,
-    // marginBottom: verticalScale(30),
     position: "absolute",
     bottom: 0,
     paddingBottom: verticalScale(10),

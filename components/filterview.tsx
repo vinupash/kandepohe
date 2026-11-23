@@ -3,7 +3,6 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  GestureResponderEvent,
   ScrollView,
 } from "react-native";
 import { verticalScale } from "react-native-size-matters";
@@ -11,35 +10,23 @@ import { ArrowDownIcon, FilterHorizontalIcon } from "./icons";
 import { Colors, Fonts } from "../constants/theme";
 
 interface FilterViewProps {
-  onPress: (event: GestureResponderEvent) => void;
-  onPressFilter: (event: GestureResponderEvent) => void;
+  onPress: () => void;
   activeFilter: string;
   onSelectFilter: (filter: string) => void;
   filters: string[];
 }
 
 const FilterView = ({
-  onPressFilter,
   onPress,
   activeFilter,
   onSelectFilter,
   filters,
 }: FilterViewProps) => {
-  // const filters = [
-  //   "Basic Details",
-  //   "Age & Height",
-  //   "Education",
-  //   "Profession",
-  //   "Location",
-  //   "Religion & Community",
-  //   "Marital Status",
-  // ];
-
   return (
     <View style={styles.filterWrapper}>
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={onPressFilter}
+        onPress={onPress}
         style={styles.filterButton}
       >
         <FilterHorizontalIcon size={verticalScale(13)} />
@@ -52,33 +39,32 @@ const FilterView = ({
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.filterScrollContent}
       >
-        {filters.map((filter) => (
-          <TouchableOpacity
-            key={filter}
-            activeOpacity={0.8}
-            onPress={() => {
-              onSelectFilter(filter);
-              onPressFilter({} as GestureResponderEvent);
-            }}
-            style={[
-              styles.iconWrapper,
-              activeFilter === filter && styles.activeFilter,
-            ]}
-          >
-            <Text
-              style={[
-                styles.filterText,
-                activeFilter === filter && styles.activeFilterText,
-              ]}
+        {filters.map((filter) => {
+          const isActive = activeFilter === filter;
+
+          return (
+            <TouchableOpacity
+              key={filter}
+              activeOpacity={0.8}
+              onPress={() => {
+                onSelectFilter(filter);
+                onPress();
+              }}
+              style={[styles.iconWrapper, isActive && styles.activeFilter]}
             >
-              {filter}
-            </Text>
-            <ArrowDownIcon
-              size={verticalScale(12)}
-              color={activeFilter === filter ? Colors.primary : Colors.text}
-            />
-          </TouchableOpacity>
-        ))}
+              <Text
+                style={[styles.filterText, isActive && styles.activeFilterText]}
+              >
+                {filter}
+              </Text>
+
+              <ArrowDownIcon
+                size={verticalScale(12)}
+                color={isActive ? Colors.primary : Colors.text}
+              />
+            </TouchableOpacity>
+          );
+        })}
       </ScrollView>
     </View>
   );

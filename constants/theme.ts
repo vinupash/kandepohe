@@ -73,6 +73,18 @@ type CommonStylesType = {
   checked: ViewStyle;
   checkmark: TextStyle;
   filterWrapper: ViewStyle;
+  filterCheckBoxWrapper: ViewStyle;
+  filterCheckBox: ViewStyle;
+  profileImageWrapper: ViewStyle;
+  emptyContainer: ViewStyle;
+  emptyTitle: TextStyle;
+  emptySubtitle: TextStyle;
+  sheetBackground: ViewStyle;
+  sheetIndicator: ViewStyle;
+  sheetContent: ViewStyle;
+  sheetTitle: TextStyle;
+  closeButton: ViewStyle;
+  sheetHeader: ViewStyle;
 };
 export const CommonStyles: CommonStylesType = {
   container: {
@@ -264,5 +276,72 @@ export const CommonStyles: CommonStylesType = {
     gap: verticalScale(10),
     overflow: "hidden",
     paddingBottom: verticalScale(50),
+  },
+  filterCheckBoxWrapper: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: scale(8),
+  },
+  filterCheckBox: {
+    width: scale(16),
+    height: scale(16),
+    borderWidth: 1.5,
+    flexShrink: 0,
+    marginTop: verticalScale(2),
+  },
+  // Home profile image
+  profileImageWrapper: {
+    flex: 1,
+    paddingHorizontal: scale(20),
+  },
+  emptyContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: scale(20),
+  },
+  emptyTitle: {
+    fontSize: scale(18),
+    fontFamily: "Poppins-SemiBold",
+    color: "#222222",
+    textAlign: "center",
+  },
+  emptySubtitle: {
+    marginTop: verticalScale(8),
+    fontSize: scale(13),
+    color: "#777777",
+    textAlign: "center",
+  },
+  // Bottom Sheet
+  sheetBackground: {
+    backgroundColor: Colors.white,
+    borderTopLeftRadius: verticalScale(20),
+    borderTopRightRadius: verticalScale(20),
+  },
+  sheetIndicator: {
+    backgroundColor: Colors.primary,
+    width: 45,
+  },
+  sheetContent: {
+    flex: 1,
+    position: "relative",
+  },
+  sheetHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: scale(20),
+    paddingBottom: verticalScale(10),
+    borderBottomColor: "#E5E7EB",
+    borderBottomWidth: 1,
+  },
+  sheetTitle: {
+    fontFamily: Fonts.semiBold,
+    fontSize: verticalScale(14),
+    color: Colors.text,
+  },
+  closeButton: {
+    padding: scale(4),
   },
 };
