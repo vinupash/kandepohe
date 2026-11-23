@@ -170,15 +170,7 @@ const Home = () => {
 
       case "Education":
         return (
-          <View
-            style={{
-              width: "100%",
-              alignSelf: "stretch",
-              gap: verticalScale(10),
-              overflow: "hidden",
-              paddingBottom: verticalScale(50),
-            }}
-          >
+          <View style={CommonStyles.filterWrapper}>
             <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
               Have Children
             </Text>
@@ -235,15 +227,7 @@ const Home = () => {
 
       case "Profession":
         return (
-          <View
-            style={{
-              width: "100%",
-              alignSelf: "stretch",
-              gap: verticalScale(10),
-              overflow: "hidden",
-              paddingBottom: verticalScale(50),
-            }}
-          >
+          <View style={CommonStyles.filterWrapper}>
             <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
               Profession Filter
             </Text>
@@ -300,15 +284,7 @@ const Home = () => {
 
       case "Location":
         return (
-          <View
-            style={{
-              width: "100%",
-              alignSelf: "stretch",
-              gap: verticalScale(10),
-              overflow: "hidden",
-              paddingBottom: verticalScale(50),
-            }}
-          >
+          <View style={CommonStyles.filterWrapper}>
             <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
               Location
             </Text>
@@ -365,14 +341,7 @@ const Home = () => {
 
       case "Marital Status":
         return (
-          <View
-            style={{
-              width: "100%",
-              alignSelf: "stretch",
-              gap: verticalScale(10),
-              overflow: "hidden",
-            }}
-          >
+          <View style={CommonStyles.filterWrapper}>
             <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
               Marital Status
             </Text>
@@ -429,14 +398,7 @@ const Home = () => {
 
       case "Have Children":
         return (
-          <View
-            style={{
-              width: "100%",
-              alignSelf: "stretch",
-              gap: verticalScale(10),
-              overflow: "hidden",
-            }}
-          >
+          <View style={CommonStyles.filterWrapper}>
             <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
               Have Children
             </Text>
@@ -493,14 +455,7 @@ const Home = () => {
 
       case "Manglik":
         return (
-          <View
-            style={{
-              width: "100%",
-              alignSelf: "stretch",
-              gap: verticalScale(10),
-              overflow: "hidden",
-            }}
-          >
+          <View style={CommonStyles.filterWrapper}>
             <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
               Manglik Filter
             </Text>
@@ -565,14 +520,7 @@ const Home = () => {
 
       case "Diet":
         return (
-          <View
-            style={{
-              width: "100%",
-              alignSelf: "stretch",
-              gap: verticalScale(10),
-              overflow: "hidden",
-            }}
-          >
+          <View style={CommonStyles.filterWrapper}>
             <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
               Diet Filter
             </Text>

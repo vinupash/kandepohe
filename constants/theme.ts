@@ -72,6 +72,7 @@ type CommonStylesType = {
   termsDescription: TextStyle;
   checked: ViewStyle;
   checkmark: TextStyle;
+  filterWrapper: ViewStyle;
 };
 export const CommonStyles: CommonStylesType = {
   container: {
@@ -256,5 +257,12 @@ export const CommonStyles: CommonStylesType = {
   termsLink: {
     color: Colors.primary,
     fontFamily: Fonts.semiBold,
+  },
+  filterWrapper: {
+    width: "100%",
+    alignSelf: "stretch",
+    gap: verticalScale(10),
+    overflow: "hidden",
+    paddingBottom: verticalScale(50),
   },
 };
