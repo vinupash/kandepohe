@@ -103,7 +103,7 @@ const Home = () => {
   };
 
   // --------------------------------
-  // Filter Content cool
+  // Filter Content
   // --------------------------------
 
   const [heightFrom, setHeightFrom] = useState<string | null>(null);
