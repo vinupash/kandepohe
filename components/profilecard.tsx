@@ -142,7 +142,7 @@ const ProfileCard = ({
   // Navigate to membership plans
   const handleViewPlans = () => {
     setShowMembershipPopup(false);
-    router.push("/Membership/membershipplans");
+    router.push("/membership/membershipplans");
     onMembershipPress?.();
   };
 

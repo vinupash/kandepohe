@@ -87,7 +87,7 @@ const ShortlistProfile = () => {
           <MembershipPopup
             viewPlans={() => {
               setShowMembershipPopup(false);
-              router.push("/Membership/membershipplans");
+              router.push("/membership/membershipplans");
             }}
             showPopup={() => setShowMembershipPopup(false)}
             maybeLater={() => setShowMembershipPopup(false)}
