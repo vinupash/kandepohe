@@ -36,7 +36,7 @@ const MembershipPlans = () => {
         <Header
           backButton
           onPress={() => router.back()}
-          screenTitle="Membership Plans"
+          screenTitle="upgrade Membership"
           isLogo={false}
         />
 

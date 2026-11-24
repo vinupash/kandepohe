@@ -1,5 +1,16 @@
 export const membershipPlansData = [
   {
+    id: "free",
+    name: "Free",
+    duration: 0,
+    price: 0,
+    interestLimit: 0,
+    priority: 0,
+    advancedFilters: false,
+    profileHighlight: false,
+    profileViewers: false,
+  },
+  {
     id: "basic",
     name: "Basic",
     duration: 3,
