@@ -74,7 +74,7 @@ export default FilterView;
 
 const styles = StyleSheet.create({
   filterWrapper: {
-    paddingHorizontal: verticalScale(15),
+    paddingHorizontal: verticalScale(20),
     paddingVertical: verticalScale(5),
     backgroundColor: "#ffffff",
     flexDirection: "row",

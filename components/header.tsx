@@ -6,13 +6,21 @@ import {
   GestureResponderEvent,
 } from "react-native";
 import { scale, verticalScale } from "react-native-size-matters";
-import { ArrowLeft, FilterHorizontalIcon } from "./icons";
+import { ArrowLeft, BellIcon, FilterHorizontalIcon } from "./icons";
+import { Colors, Fonts } from "../constants/theme";
 
 interface HeaderProps {
   onPress: (event: GestureResponderEvent) => void;
   backButton: boolean;
+  screenTitle: string;
+  isLogo: boolean;
 }
-const Header = ({ backButton = false, onPress }: HeaderProps) => {
+const Header = ({
+  backButton = false,
+  onPress,
+  screenTitle,
+  isLogo = true,
+}: HeaderProps) => {
   return (
     <View style={styles.homeHeaderWrapper}>
       {backButton ? (
@@ -21,13 +29,24 @@ const Header = ({ backButton = false, onPress }: HeaderProps) => {
           onPress={onPress}
           style={styles.iconWrapper}
         >
-          <ArrowLeft size={verticalScale(20)} />
+          <ArrowLeft size={verticalScale(20)} color={Colors.primary} />
         </TouchableOpacity>
       ) : (
         <View style={styles.dummyView} />
       )}
-      <View style={styles.logo} />
+      {isLogo ? (
+        <View style={styles.logo} />
+      ) : (
+        <Text style={styles.screenTitle}>{screenTitle}</Text>
+      )}
       <View style={styles.dummyView} />
+      {/*<TouchableOpacity
+        activeOpacity={0.8}
+        onPress={onPress}
+        style={styles.iconWrapper}
+      >
+        <BellIcon size={verticalScale(16)} color={Colors.primary} />
+      </TouchableOpacity>*/}
     </View>
   );
 };
@@ -39,7 +58,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: verticalScale(15),
+    paddingHorizontal: verticalScale(20),
     paddingVertical: verticalScale(4),
     backgroundColor: "#ffffff",
     // borderWidth: 1,
@@ -47,10 +66,11 @@ const styles = StyleSheet.create({
   logo: {
     width: scale(100),
     height: scale(40),
+    // borderWidth: 1,
   },
   dummyView: {
-    width: verticalScale(30),
-    height: verticalScale(30),
+    width: verticalScale(35),
+    height: verticalScale(35),
     // borderWidth: 1,
   },
   iconWrapper: {
@@ -59,8 +79,12 @@ const styles = StyleSheet.create({
     borderRadius: verticalScale(17.5),
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: "#fafafa",
-    // borderColor: "#D1D5DB",
-    // borderWidth: 1,
+    backgroundColor: "#fafafa",
+    borderColor: "#D1D5DB",
+    borderWidth: 1,
+  },
+  screenTitle: {
+    fontFamily: Fonts.semiBold,
+    fontSize: verticalScale(12),
   },
 });

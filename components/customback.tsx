@@ -19,7 +19,7 @@ const CustomBack = ({ onPress, size }: CustomBackType) => {
       style={styles.backIconWrapper}
       onPress={onPress}
     >
-      <ArrowLeft size={size} />
+      <ArrowLeft size={size} color={Colors.primary} />
     </TouchableOpacity>
   );
 };

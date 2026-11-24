@@ -25,6 +25,7 @@ import {
   UserCheckIcon,
   XIcon,
 } from "./icons";
+import { router } from "expo-router";
 
 interface ProfileCardProps {
   name: string;
@@ -32,6 +33,7 @@ interface ProfileCardProps {
   height: number;
   age: number;
   onPress: () => void;
+
   professional?: string;
   location?: string;
 
@@ -43,6 +45,7 @@ interface ProfileCardProps {
   onCall?: () => void;
   onShortlist?: (shortlisted: boolean) => void;
   onDownload?: () => void;
+  handleImagePress: () => void;
 
   isVerified?: boolean;
 }
@@ -63,6 +66,7 @@ const ProfileCard = ({
   onShortlist,
   onDownload,
   isVerified = false,
+  handleImagePress,
 }: ProfileCardProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isShortlisted, setIsShortlisted] = useState(false);
@@ -138,6 +142,7 @@ const ProfileCard = ({
   // Navigate to membership plans
   const handleViewPlans = () => {
     setShowMembershipPopup(false);
+    router.push("/Membership/membershipplans");
     onMembershipPress?.();
   };
 
@@ -160,13 +165,19 @@ const ProfileCard = ({
         onMomentumScrollEnd={handleImageScroll}
         style={styles.imageSlider}
         renderItem={({ item }) => (
-          <Image
-            source={item}
-            contentFit="cover"
-            transition={300}
-            blurRadius={isMember ? 0 : 25}
-            style={[styles.profileImage, { width: imageWidth }]}
-          />
+          <TouchableOpacity
+            activeOpacity={0.9}
+            onPress={handleImagePress}
+            style={{ width: imageWidth, height: "100%" }}
+          >
+            <Image
+              source={item}
+              contentFit="cover"
+              transition={300}
+              blurRadius={isMember ? 0 : 25}
+              style={styles.profileImage}
+            />
+          </TouchableOpacity>
         )}
       />
 

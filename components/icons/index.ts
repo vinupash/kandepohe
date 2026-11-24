@@ -19,3 +19,4 @@ export { LockKeyholeIcon } from "./AppIcons";
 export { CallLocked02Icon } from "./AppIcons";
 export { UserSearch02Icon } from "./AppIcons";
 export { EraserIcon } from "./AppIcons";
+export { BellIcon } from "./AppIcons";

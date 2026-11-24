@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useRef } from "react";
+import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import {
   View,
   Text,
@@ -22,8 +22,11 @@ import { EraserIcon, XIcon } from "../../../components/icons/AppIcons";
 import { mockProfiles } from "../../../mocks/profile_data";
 import SelectDropdown from "../../../components/selectdropdown";
 import { mockSelects } from "../../../mocks/select_data";
+import { router } from "expo-router";
 
 const Home = () => {
+  const [isMember, setIsMember] = useState(false);
+
   // --------------------------------
   // Profile List
   // --------------------------------
@@ -582,7 +585,12 @@ const Home = () => {
         edges={["left", "right", "top", "bottom"]}
       >
         {/* Header */}
-        <Header backButton={false} onPress={() => {}} />
+        <Header
+          backButton={false}
+          onPress={() => {}}
+          screenTitle="Home"
+          isLogo={true}
+        />
 
         {/* Horizontal Filter View */}
         <FilterView
@@ -614,19 +622,26 @@ const Home = () => {
                   age={item.age}
                   professional={item.education}
                   location={item.location}
-                  isMember={item.isMember}
+                  isMember={isMember}
                   isVerified={true}
                   onMembershipPress={() => {}}
-                  onPress={() => {}}
-                  onCall={() => {
-                    console.log("Call profile:", item.id);
-                  }}
-                  onShortlist={(value) => {
-                    console.log("Shortlist:", item.id, value);
-                  }}
-                  onDownload={() => {
-                    console.log("Download profile:", item.id);
-                  }}
+                  handleImagePress={() =>
+                    router.push({
+                      pathname: "/profileview/profileview",
+                      // params: { id: item.id },
+                    })
+                  }
+                  onPress={() =>
+                    router.push({
+                      pathname: "/profileview/profileview",
+                      // params: { id: item.id },
+                    })
+                  }
+                  onCall={() => console.log("Call profile:", item.id)}
+                  onShortlist={(value) =>
+                    console.log("Shortlist:", item.id, value)
+                  }
+                  onDownload={() => console.log("Download profile:", item.id)}
                 />
               )}
               ListEmptyComponent={
