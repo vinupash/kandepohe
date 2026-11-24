@@ -128,7 +128,9 @@ const Home = () => {
               gap: verticalScale(10),
             }}
           >
-            <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
+            <Text
+              style={[CommonStyles.filterPlaceholder, { textAlign: "right" }]}
+            >
               Height Filters
             </Text>
 
@@ -156,7 +158,9 @@ const Home = () => {
               gap: verticalScale(20),
             }}
           >
-            <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
+            <Text
+              style={[CommonStyles.filterPlaceholder, { textAlign: "right" }]}
+            >
               Age Filters
             </Text>
 
@@ -179,7 +183,9 @@ const Home = () => {
       case "Education":
         return (
           <View style={CommonStyles.filterWrapper}>
-            <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
+            <Text
+              style={[CommonStyles.filterPlaceholder, { textAlign: "right" }]}
+            >
               Have Children
             </Text>
 
@@ -231,7 +237,9 @@ const Home = () => {
       case "Profession":
         return (
           <View style={CommonStyles.filterWrapper}>
-            <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
+            <Text
+              style={[CommonStyles.filterPlaceholder, { textAlign: "right" }]}
+            >
               Profession Filter
             </Text>
 
@@ -283,7 +291,9 @@ const Home = () => {
       case "Location":
         return (
           <View style={CommonStyles.filterWrapper}>
-            <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
+            <Text
+              style={[CommonStyles.filterPlaceholder, { textAlign: "right" }]}
+            >
               Location
             </Text>
 
@@ -335,7 +345,9 @@ const Home = () => {
       case "Marital Status":
         return (
           <View style={CommonStyles.filterWrapper}>
-            <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
+            <Text
+              style={[CommonStyles.filterPlaceholder, { textAlign: "right" }]}
+            >
               Marital Status
             </Text>
 
@@ -387,7 +399,9 @@ const Home = () => {
       case "Have Children":
         return (
           <View style={CommonStyles.filterWrapper}>
-            <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
+            <Text
+              style={[CommonStyles.filterPlaceholder, { textAlign: "right" }]}
+            >
               Have Children
             </Text>
 
@@ -439,7 +453,9 @@ const Home = () => {
       case "Manglik":
         return (
           <View style={CommonStyles.filterWrapper}>
-            <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
+            <Text
+              style={[CommonStyles.filterPlaceholder, { textAlign: "right" }]}
+            >
               Manglik Filter
             </Text>
 
@@ -489,17 +505,19 @@ const Home = () => {
         );
 
       // case "City":
-      //   return <Text style={styles.filterPlaceholder}>City Filters</Text>;
+      //   return <Text style={CommonStyles.filterPlaceholder}>City Filters</Text>;
 
       // case "Employed In":
       //   return (
-      //     <Text style={styles.filterPlaceholder}>Employed In Filters</Text>
+      //     <Text style={CommonStyles.filterPlaceholder}>Employed In Filters</Text>
       //   );
 
       case "Diet":
         return (
           <View style={CommonStyles.filterWrapper}>
-            <Text style={[styles.filterPlaceholder, { textAlign: "right" }]}>
+            <Text
+              style={[CommonStyles.filterPlaceholder, { textAlign: "right" }]}
+            >
               Diet Filter
             </Text>
 
@@ -672,11 +690,11 @@ const Home = () => {
             </View>
 
             {/* Filter Tabs and Content */}
-            <View style={styles.filterContainer}>
+            <View style={CommonStyles.filterContainer}>
               {/* Left Side - Vertical Tabs */}
               <ScrollView
-                style={styles.filterTabs}
-                contentContainerStyle={styles.filterTabsContent}
+                style={CommonStyles.filterTabs}
+                contentContainerStyle={CommonStyles.filterTabsContent}
                 showsVerticalScrollIndicator={false}
                 nestedScrollEnabled
               >
@@ -689,14 +707,14 @@ const Home = () => {
                       activeOpacity={0.8}
                       onPress={() => setActiveFilter(tab)}
                       style={[
-                        styles.filterTab,
-                        isActive && styles.activeFilterTab,
+                        CommonStyles.filterTab,
+                        isActive && CommonStyles.activeFilterTab,
                       ]}
                     >
                       <Text
                         style={[
-                          styles.filterTabText,
-                          isActive && styles.activeFilterTabText,
+                          CommonStyles.filterTabText,
+                          isActive && CommonStyles.activeFilterTabText,
                         ]}
                       >
                         {tab}
@@ -708,8 +726,8 @@ const Home = () => {
 
               {/* Right Side - Filter Content */}
               <ScrollView
-                style={styles.filterContent}
-                contentContainerStyle={styles.filterContentContainer}
+                style={CommonStyles.filterContent}
+                contentContainerStyle={CommonStyles.filterContentContainer}
                 showsVerticalScrollIndicator={false}
                 nestedScrollEnabled
                 keyboardShouldPersistTaps="handled"
@@ -719,27 +737,12 @@ const Home = () => {
             </View>
 
             {/* Bottom Footer - Outside filterContainer */}
-            <View style={styles.filterFooter}>
+            <View style={CommonStyles.filterFooter}>
               {/* Clear All */}
-              {/*<TouchableOpacity
-                activeOpacity={0.8}
-                onPress={handleClearFilters}
-                style={styles.clearFilterButton}
-              >
-                <Text style={styles.clearFilterText}>Clear All</Text>
-              </TouchableOpacity>*/}
               <TouchableOpacity
                 activeOpacity={0.8}
                 onPress={handleClearFilters}
-                style={{
-                  width: scale(40),
-                  height: scale(40),
-                  borderRadius: scale(20),
-                  backgroundColor: Colors.white,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  ...Shadows.small,
-                }}
+                style={CommonStyles.filterButton}
               >
                 <EraserIcon size={verticalScale(14)} color={Colors.primary} />
               </TouchableOpacity>
@@ -748,9 +751,9 @@ const Home = () => {
               <TouchableOpacity
                 activeOpacity={0.8}
                 onPress={handleApplyFilters}
-                style={styles.applyFilterButton}
+                style={CommonStyles.applyFilterButton}
               >
-                <Text style={styles.applyFilterText}>Apply Filters</Text>
+                <Text style={CommonStyles.applyFilterText}>Apply Filters</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -761,111 +764,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// --------------------------------
-// Styles
-// --------------------------------
-
-const styles = StyleSheet.create({
-  // Filter Layout
-  filterContainer: {
-    flex: 1,
-    flexDirection: "row",
-    overflow: "hidden",
-  },
-
-  filterTabs: {
-    width: "38%",
-    flexGrow: 0,
-    flexShrink: 0,
-    backgroundColor: "#F8F8F8",
-  },
-
-  filterTabsContent: {
-    flexGrow: 1,
-    paddingBottom: verticalScale(10),
-  },
-
-  filterContent: {
-    flex: 1,
-    minWidth: 0,
-    backgroundColor: Colors.white,
-  },
-
-  filterContentContainer: {
-    flexGrow: 1,
-    padding: scale(15),
-  },
-
-  filterTab: {
-    paddingHorizontal: scale(10),
-    paddingVertical: verticalScale(14),
-    borderLeftWidth: 3,
-    borderLeftColor: "transparent",
-  },
-
-  activeFilterTab: {
-    backgroundColor: Colors.white,
-    borderLeftColor: Colors.primary,
-  },
-
-  filterTabText: {
-    fontFamily: Fonts.regular,
-    fontSize: scale(10),
-    color: Colors.text,
-  },
-
-  activeFilterTabText: {
-    fontFamily: Fonts.semiBold,
-    color: Colors.primary,
-  },
-
-  filterPlaceholder: {
-    fontFamily: Fonts.medium,
-    fontSize: scale(12),
-    color: Colors.text,
-  },
-
-  // Footer
-  filterFooter: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: scale(16),
-    gap: scale(10),
-    flexShrink: 0,
-    position: "absolute",
-    bottom: 0,
-    paddingBottom: verticalScale(10),
-  },
-
-  clearFilterButton: {
-    flex: 1,
-    height: verticalScale(40),
-    borderRadius: scale(8),
-    borderWidth: 1,
-    borderColor: Colors.primary,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  clearFilterText: {
-    fontFamily: Fonts.medium,
-    fontSize: scale(11),
-    color: Colors.primary,
-  },
-
-  applyFilterButton: {
-    flex: 1.5,
-    height: verticalScale(40),
-    borderRadius: scale(20),
-    backgroundColor: Colors.primary,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  applyFilterText: {
-    fontFamily: Fonts.medium,
-    fontSize: scale(11),
-    color: Colors.white,
-  },
-});

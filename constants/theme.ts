@@ -85,6 +85,22 @@ type CommonStylesType = {
   sheetTitle: TextStyle;
   closeButton: ViewStyle;
   sheetHeader: ViewStyle;
+  filterContainer: ViewStyle;
+  filterTabs: ViewStyle;
+  filterTabsContent: ViewStyle;
+  filterContent: ViewStyle;
+  filterContentContainer: ViewStyle;
+  filterTab: ViewStyle;
+  activeFilterTab: ViewStyle;
+  filterTabText: TextStyle;
+  activeFilterTabText: TextStyle;
+  filterPlaceholder: TextStyle;
+  filterFooter: ViewStyle;
+  clearFilterButton: ViewStyle;
+  clearFilterText: TextStyle;
+  applyFilterButton: ViewStyle;
+  filterButton: ViewStyle;
+  applyFilterText: TextStyle;
 };
 export const CommonStyles: CommonStylesType = {
   container: {
@@ -343,5 +359,116 @@ export const CommonStyles: CommonStylesType = {
   },
   closeButton: {
     padding: scale(4),
+  },
+  // Filter Layout
+  filterContainer: {
+    flex: 1,
+    flexDirection: "row",
+    overflow: "hidden",
+  },
+
+  filterTabs: {
+    width: "38%",
+    flexGrow: 0,
+    flexShrink: 0,
+    backgroundColor: "#F8F8F8",
+  },
+
+  filterTabsContent: {
+    flexGrow: 1,
+    paddingBottom: verticalScale(10),
+  },
+
+  filterContent: {
+    flex: 1,
+    minWidth: 0,
+    backgroundColor: Colors.white,
+  },
+
+  filterContentContainer: {
+    flexGrow: 1,
+    padding: scale(15),
+  },
+
+  filterTab: {
+    paddingHorizontal: scale(10),
+    paddingVertical: verticalScale(14),
+    borderLeftWidth: 3,
+    borderLeftColor: "transparent",
+  },
+
+  activeFilterTab: {
+    backgroundColor: Colors.white,
+    borderLeftColor: Colors.primary,
+  },
+
+  filterTabText: {
+    fontFamily: Fonts.regular,
+    fontSize: scale(10),
+    color: Colors.text,
+  },
+
+  activeFilterTabText: {
+    fontFamily: Fonts.semiBold,
+    color: Colors.primary,
+  },
+
+  filterPlaceholder: {
+    fontFamily: Fonts.medium,
+    fontSize: scale(12),
+    color: Colors.text,
+  },
+
+  // Footer
+  filterFooter: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: scale(16),
+    gap: scale(10),
+    flexShrink: 0,
+    position: "absolute",
+    bottom: 0,
+    paddingBottom: verticalScale(10),
+  },
+
+  clearFilterButton: {
+    flex: 1,
+    height: verticalScale(40),
+    borderRadius: scale(8),
+    borderWidth: 1,
+    borderColor: Colors.primary,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  clearFilterText: {
+    fontFamily: Fonts.medium,
+    fontSize: scale(11),
+    color: Colors.primary,
+  },
+
+  applyFilterButton: {
+    flex: 1.5,
+    height: verticalScale(40),
+    borderRadius: scale(20),
+    backgroundColor: Colors.primary,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  applyFilterText: {
+    fontFamily: Fonts.medium,
+    fontSize: scale(11),
+    color: Colors.white,
+  },
+
+  filterButton: {
+    width: scale(40),
+    height: scale(40),
+    borderRadius: scale(20),
+    backgroundColor: Colors.white,
+    justifyContent: "center",
+    alignItems: "center",
+    ...Shadows.small,
   },
 };
